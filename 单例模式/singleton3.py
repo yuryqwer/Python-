@@ -1,6 +1,6 @@
 class Logger:
     """
-    利用类在不同实例中的唯一性，将类变量作为全局标志位
+    利用类的唯一性，将类变量作为全局标志位
     将日志功能实现为类方法，其实不该叫单例模式，而是单类模式
     因为根本就没有产生实例
     """
@@ -34,6 +34,9 @@ class Logger:
 
 if __name__ == "__main__":
     logger1 = Logger
-    logger1.file_name = "filename.log"
+    if not logger1.file_name:
+        logger1.file_name = "filename.log"
     logger2 = Logger
+    if not logger2.file_name:
+        logger2.file_name = "newfilename.log"
     print(logger1.file_name, logger2.file_name)
